@@ -6,6 +6,10 @@ import styles from "@/styles/Pokemon.module.css";
 interface PokemonProps {
   pokemon: {
     name: string;
+    id: number;
+    types: string[]; // ou o tipo correspondente à sua estrutura
+    height: number;
+    weight: number;
     
     // Você pode adicionar mais campos da PokeAPI aqui se precisar (ex: id, sprites, etc)
   }
@@ -71,7 +75,7 @@ export default function Pokemon({ pokemon }: PokemonProps) {
         <div className={styles.infoRow}>
           <h3>Tipo:</h3>
           <div className={styles.typesContainer}>
-            {pokemon.types.map((item, index) => {
+            {pokemon.types.map((item: any, index: number) => {
               const typeClass = styles[`type_${item.type.name.toLowerCase()}`] || '';
               return (
                 <span 
