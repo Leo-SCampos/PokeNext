@@ -1,149 +1,87 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
-}
-
-.main {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
-}
-
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-}
-
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
-
-.ctas a {
+/* Container do Topo (Header da Pokédex) */
+.title_container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+  gap: 0.5rem;
+  background-color: #dc0a2d; /* Vermelho icônico da Pokédex */
+  padding: 1rem;
+  border-bottom: 3px solid #232323; /* Detalhe de divisão da Pokédex */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+/* Título Principal */
+.title {
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin: 0;
+  text-shadow: 3px 3px 0px #3b4cca; /* Sombra azul clássica da logo Pokémon */
+  display: flex;
+  align-items: center;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+/* O texto "Next" destacado */
+.title_span {
+  color: #ffde00; /* Amarelo clássico */
+  margin-left: 0.2rem;
+  text-shadow: 3px 3px 0px #b3a125, -1px -1px 0 #3b4cca, 1px -1px 0 #3b4cca, -1px 1px 0 #3b4cca, 1px 1px 0 #3b4cca;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+/* Grid Responsivo dos Pokémons */
+.pokemon_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f7f7f7; /* Fundo suave para destacar os cards */
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
+/* --- Media Queries para Perfeita Responsividade --- */
+
+/* Dispositivos Pequenos (Celulares) */
+@media (max-width: 480px) {
+  .title_container {
+    flex-direction: column; /* Alinha o título e a pokébola verticalmente no mobile */
+    gap: 0.5rem;
+    padding: 1rem;
   }
 
-  .intro {
-    gap: 16px;
+  .title {
+    font-size: 1.8rem; /* Diminui o texto para não quebrar a tela */
   }
 
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+  .pokemon_container {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Cards ligeiramente menores */
+    gap: 1rem;
+    padding: 1rem;
   }
 }
 
-.code {
-  font-family: var(--font-geist-mono);
-  font-size: 0.9em;
-  background: color-mix(in srgb, currentColor 8%, transparent);
-  padding: 0.1em 0.4em;
-  border-radius: 6px;
+/* Dispositivos Médios (Tablets) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  
+  .pokemon_container {
+    gap: 1.25rem;
+  }
 }
+
+/*Card*/
+/* CSS do elemento pai (ex: PokedexGrid.module.css) */
+.grid_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+}
+
+

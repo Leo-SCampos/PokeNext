@@ -1,0 +1,199 @@
+/* --- PALETA DE CORES POKÉDEX --- */
+.pokedexCard {
+  --pokedex-red: #dc0a2d;
+  --pokedex-dark-red: #8b0000;
+  --pokedex-screen-bg: #232323;
+  --pokedex-screen-border: #dedede;
+  --text-main: #ffffff;
+  --text-muted: #a4a4a4;
+  
+  /* Cores dos Tipos de Pokémon */
+  --type-normal: #aa99ff;
+  --type-fire: #ff4422;
+  --type-water: #3399ff;
+  --type-electric: #ffcc33;
+  --type-grass: #77cc55;
+  --type-ice: #66ccff;
+  --type-fighting: #bb5544;
+  --type-poison: #aa5599;
+  --type-ground: #ddbb55;
+  --type-flying: #8899ff;
+  --type-psychic: #ff5599;
+  --type-bug: #aabb22;
+  --type-rock: #bbaa66;
+  --type-ghost: #6666bb;
+  --type-dragon: #7766ee;
+  --type-dark: #775544;
+  --type-steel: #aaaabb;
+  --type-fairy: #ee99ee;
+
+  /* --- ESTRUTURA DO CARD --- */
+  background-color: var(--pokedex-red);
+  border: 8px solid var(--pokedex-dark-red);
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), inset 0 4px 0 rgba(255, 255, 255, 0.3);
+  width: 350px;
+  padding: 24px;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+   margin: 40px auto; /* Adicione isso: centraliza nas laterais e dá espaço topo/base */
+}
+
+/* Efeito de foco interativo */
+.pokedexCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.5), inset 0 4px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Nome do Pokémon */
+.pokemonName {
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0px var(--pokedex-dark-red);
+}
+
+/* --- TELA CRT DA IMAGEM --- */
+.imageContainer {
+  background-color: var(--pokedex-screen-bg);
+  border: 4px solid var(--pokedex-screen-border);
+  border-bottom-left-radius: 25px; /* Detalhe clássico de corte na quina da Pokédex */
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+/* Pequeno LED decorativo piscante abaixo da tela */
+.imageContainer::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 24px;
+  width: 10px;
+  height: 10px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ff0000;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.3; }
+}
+
+/* --- PAINEL DE INFORMAÇÕES (DISPLAY INFERIOR) --- */
+.pokemonInfo {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 16px;
+  border: 2px solid #333;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #2d2d2d;
+  padding-bottom: 8px;
+}
+
+.infoRow:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.infoRow h3 {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pokemonNumber {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffcc00; /* Amarelo clássico Pokémon para o ID */
+  margin: 0;
+}
+
+/* --- BADGES DOS TIPOS --- */
+.typesContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.typeBadge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Classes dinâmicas de tipos mapeadas */
+.type_normal { background-color: var(--type-normal); }
+.type_fire { background-color: var(--type-fire); }
+.type_water { background-color: var(--type-water); }
+.type_electric { background-color: var(--type-electric); }
+.type_grass { background-color: var(--type-grass); }
+.type_ice { background-color: var(--type-ice); }
+.type_fighting { background-color: var(--type-fighting); }
+.type_poison { background-color: var(--type-poison); }
+.type_ground { background-color: var(--type-ground); }
+.type_flying { background-color: var(--type-flying); }
+.type_psychic { background-color: var(--type-psychic); }
+.type_bug { background-color: var(--type-bug); }
+.type_rock { background-color: var(--type-rock); }
+.type-ghost { background-color: var(--type-ghost); }
+.type_dragon { background-color: var(--type-dragon); }
+.type_dark { background-color: var(--type-dark); }
+.type_steel { background-color: var(--type-steel); }
+.type_fairy { background-color: var(--type-fairy); }
+
+/* --- GRID DE STATUS --- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.statBox {
+  background-color: #252525;
+  border: 2px solid #3a3a3a;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+}
+
+.statBox h4 {
+  margin: 0 0 4px 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.statBox p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00ffcc; /* Verde neon estilo terminal eletrônico */
+  text-shadow: 0 0 6px rgba(0, 255, 210, 0.5);
+}
+
